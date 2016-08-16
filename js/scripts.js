@@ -7,6 +7,9 @@ function countBy(i,j,k){
   return increment;
 }
 function factorialFun(fac){
+  if(fac < 0) {
+    return -1;
+  }
   var num = 1;
   for (var i = 1; i <= fac; i++) {
     num *= i;
@@ -16,8 +19,10 @@ function factorialFun(fac){
 function factorialFunRecursion(fac){
   if(fac > 1)
     return fac * factorialFunRecursion(fac - 1);
-  else if(fac == 0)
+  else if(fac === 0)
     return 1;
+  else if(fac < 0)
+    return -1;
   else
     return fac;
 }
@@ -74,7 +79,6 @@ function primeFinder(prime) {
   for (var i = 0; i <= prime; i++) {
       primeArr.push(i);
   }
-  primeArr[0] = 0;
   primeArr[1] = 0;
   for (var i = 2; i <= prime; i++) {
       for (var j = 2; i*j <= prime; j++) {
@@ -94,7 +98,7 @@ $(document).ready(function() {
     var start = parseInt($("#start").val());
     var limit = parseInt($("#limit").val());
     var count = parseInt($("#count").val());
-    alert(isCounting(start,limit,count));
+    $("#responseCount").text(isCounting(start,limit,count));
     event.preventDefault();
   });
   //Git rid of your vowels
@@ -107,31 +111,53 @@ $(document).ready(function() {
   });
   $("form.wordPuzzleAnswer").submit(function(event){
     var answer = $("#answer").val().toLowerCase();
-      alert(answerChecker(answer, sentence));
+      $("#responsePuzzle").text(answerChecker(answer, sentence));
     event.preventDefault();
   });
   //factorial recursion
   $("#recursion").click(function(){
-    var factorial = parseInt($("#factorial").val());
+    var factorial = parseFloat($("#factorial").val());
+    if(factorial % 1 || !(factorial)){
+      $("#responseFact").text("Please enter a positive whole number");
+      return;
+    }
     var number = factorialFunRecursion(factorial);
-    alert(number);
+    if (number === -1) {
+      $("#responseFact").text("Positive numbers only!");
+    }
+    else {
+      $("#responseFact").text(number);
+    }
   });
   //factorial looping
   $("#looping").click(function(){
-    var factorial = parseInt($("#factorial").val());
+    var factorial = parseFloat($("#factorial").val());
+    if(factorial % 1 || !(factorial)){
+      $("#responseFact").text("Please enter a positive whole number");
+      return;
+    }
     var number = factorialFun(factorial);
-    alert(number);
+    if (number === -1) {
+      $("#responseFact").text("Positive numbers only!");
+    }
+    else {
+      $("#responseFact").text(number);
+    }
   });
   //Palindrome
   $("form#palindromeForm").submit(function(event){
     var palindrome = $("#palindrome").val();
-    alert(isPalindrome(palindrome));
+    $("#responsePal").text(isPalindrome(palindrome));
     event.preventDefault();
   });
   //Prime number generator
   $("form#primeForm").submit(function(event){
-      var prime = parseInt($("#prime").val());
-      alert(primeFinder(prime));
       event.preventDefault();
+      var prime = parseFloat($("#prime").val());
+      if(prime < 2 || !(prime)){
+        $("#responsePrime").text("Please enter a positive number greater than 1");
+        return;
+      }
+      $("#responsePrime").text(primeFinder(prime));
   });
 });

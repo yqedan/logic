@@ -1,3 +1,6 @@
 .wordPuzzleAnswer {
   display: none;
 }
+.answer{
+  font-size: 24px;
+}
