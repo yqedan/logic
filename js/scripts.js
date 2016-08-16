@@ -1,4 +1,7 @@
 var sentence = "";
+var arrOfVowels = ["a","e","i","o","u"];
+var arrOfPrimes = [2, 3, 5, 7];
+//var num = 1;
 function countBy(i,j,k){
   var increment = [];
   for(var index=i; index<=j; index+=k) {
@@ -6,8 +9,23 @@ function countBy(i,j,k){
   }
   return increment;
 }
-var arrOfVowels = ["a","e","i","o","u"];
-
+function factorialFun(fac){
+  var num = 1;
+  for (var i = 1; i <= fac; i++) {
+    num *= i;
+  }
+  return num;
+}
+/*
+function factorialFunRecursion(fac){
+  num = num * (fac-1);
+  fac --;
+  if(fac > 0)
+    return factorialFunRecursion(num);
+  else
+    return num;
+}
+*/
 $(document).ready(function() {
   $("form#counting").submit(function(event){
     var increment = [];
@@ -55,5 +73,46 @@ $(document).ready(function() {
       alert("Guess again!");
     }
     event.preventDefault();
+  });
+  $("form.factorialForm").submit(function(event){
+    var factorial = parseInt($("#factorial").val());
+    var number = factorialFun(factorial);
+    //var number = factorialFunRecursion(factorial);
+    alert(number);
+    event.preventDefault();
+  });
+  $("form#palindromeForm").submit(function(event){
+    var palindrome = $("#palindrome").val();
+    var arrOfPal = palindrome.split("");
+    var reversePal = arrOfPal.slice().reverse().join("");
+    if(palindrome === reversePal) {
+      alert("This is a palindrome!");
+    } else {
+      alert("This isn't a palindrome!");
+    }
+    event.preventDefault();
+  });
+  $("form#primeForm").submit(function(event){
+      var prime = parseInt($("#prime").val());
+      var primeArr = [];
+      var primeArrNum = [];
+      for (var i = 0; i <= prime; i++) {
+          primeArr.push(i);
+      }
+      primeArr[0] = 0;
+      primeArr[1] = 0;
+      //debugger;
+      for (var i = 2; i <= prime; i++) {
+          for (var j = 2; i*j <= prime; j++) {
+            primeArr[i*j] = 0;
+          }
+      }
+      primeArr.forEach(function(element) {
+        if(element !== 0) {
+          primeArrNum.push(element);
+        }
+      });
+      alert(primeArrNum);
+      event.preventDefault();
   });
 });
