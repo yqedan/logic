@@ -1,3 +1,4 @@
+var sentence = "";
 function countBy(i,j,k){
   var increment = [];
   for(var index=i; index<=j; index+=k) {
@@ -5,7 +6,7 @@ function countBy(i,j,k){
   }
   return increment;
 }
-
+var arrOfVowels = ["a","e","i","o","u"];
 
 $(document).ready(function() {
   $("form#counting").submit(function(event){
@@ -27,9 +28,32 @@ $(document).ready(function() {
       alert(increment);
     }
     event.preventDefault();
-
   });
   $("form#wordPuzzle").submit(function(event){
-    alert("im here!");
+    $("#wordPuzzle").slideUp();
+    $(".wordPuzzleAnswer").fadeIn();
+    sentence = $("#sentence").val().toLowerCase();
+    var sentenceEncoded = "";
+    var arrOfChar = sentence.split("");
+    for (var i = 0; i < arrOfChar.length; i++) {
+      for (var j = 0; j < arrOfVowels.length; j++) {
+        if(arrOfChar[i] === arrOfVowels[j]) {
+          arrOfChar[i] = "-";
+        }
+      }
+    }
+    sentenceEncoded = arrOfChar.join("");
+    $("#newSentence").text(sentenceEncoded);
+    event.preventDefault();
+  });
+  $("form.wordPuzzleAnswer").submit(function(event){
+    var answer = $("#answer").val().toLowerCase();
+    if(answer === sentence) {
+      alert("You guessed right!");
+    }
+    else {
+      alert("Guess again!");
+    }
+    event.preventDefault();
   });
 });
