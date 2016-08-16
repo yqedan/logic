@@ -1,7 +1,6 @@
 var sentence = "";
 var arrOfVowels = ["a","e","i","o","u"];
 var arrOfPrimes = [2, 3, 5, 7];
-//var num = 1;
 function countBy(i,j,k){
   var increment = [];
   for(var index=i; index<=j; index+=k) {
@@ -16,16 +15,16 @@ function factorialFun(fac){
   }
   return num;
 }
-/*
+
 function factorialFunRecursion(fac){
-  num = num * (fac-1);
-  fac --;
-  if(fac > 0)
-    return factorialFunRecursion(num);
+  if(fac > 1)
+    return fac * factorialFunRecursion(fac - 1);
+  else if(fac == 0)
+    return 1;
   else
-    return num;
+    return fac;
 }
-*/
+
 $(document).ready(function() {
   $("form#counting").submit(function(event){
     var increment = [];
@@ -76,8 +75,8 @@ $(document).ready(function() {
   });
   $("form.factorialForm").submit(function(event){
     var factorial = parseInt($("#factorial").val());
-    var number = factorialFun(factorial);
-    //var number = factorialFunRecursion(factorial);
+    //var number = factorialFun(factorial);
+    var number = factorialFunRecursion(factorial);
     alert(number);
     event.preventDefault();
   });
