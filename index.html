@@ -13,24 +13,28 @@
       <form id="counting">
         <div class="form-group">
           <label for="start">Input your starting number:</label>
-          <input id="start" type="number" class="format-control" placeholder="Starting Number">
+          <input id="start" type="number" class="form-control" placeholder="Starting Number">
         </div>
         <div class="form-group">
           <label for="limit">Input your limiting number:</label>
-          <input id="limit" type="number" class="format-control" placeholder="Limiting Number">
+          <input id="limit" type="number" class="form-control" placeholder="Limiting Number">
         </div>
         <div class="form-group">
           <label for="count">Input your counting number:</label>
-          <input id="count" type="number" class="format-control" placeholder="Counting Number">
+          <input id="count" type="number" class="form-control" placeholder="Counting Number">
         </div>
         <button type="submit" class="btn btn-success">Count!</button>
       </form>
-      <br><p><span class="answer" id="responseCount"></span></p>
+      <div class="responseBox">
+        <br>
+        <p id="responseCount"> </p>
+        <br>
+      </div>
       <h1>Get Rid of Your Vowels!</h1>
       <form id="wordPuzzle">
         <div class="form-group">
           <label for="sentence">Enter a sentence:</label>
-          <input id="sentence" type="text" class="format-control" placeholder="sentence">
+          <input id="sentence" type="text" class="form-control" placeholder="sentence">
         </div>
         <button type="submit" class="btn btn-warning">De-Vowel!</button>
       </form>
@@ -38,37 +42,45 @@
       <form class="wordPuzzleAnswer">
         <div class="form-group">
           <label for="answer">Enter your guess:</label>
-          <input id="answer" type="text" class="format-control" placeholder="answer">
+          <input id="answer" type="text" class="form-control" placeholder="answer">
         </div>
         <button type="submit" class="btn btn-warning">Check your answer!</button>
       </form>
-      <br><p><span class="answer" id="responsePuzzle"></span></p>
+      <p><span class="answer" id="responsePuzzle"></span></p>
       <h1>Factorial!</h1>
       <div class="form-group">
         <label for="factorial">Factorial a number:</label>
-        <input id="factorial" type="number" class="format-control" placeholder="factorial">
+        <input id="factorial" type="number" class="form-control" placeholder="factorial">
       </div>
       <button id="recursion" type="submit" class="btn btn-danger">Use Recursion!</button>
       <button id="looping" type="submit" class="btn btn-warning">Use Looping!</button>
-      <br><p><span class="answer" id="responseFact"></span></p>
+      <div class="responseBox">
+        <br>
+        <p id ="responseFact"> </p>
+        <br>
+      </div>
       <h1>Palindrome!</h1>
       <form id="palindromeForm">
         <div class="form-group">
           <label for="palindrome">Type something:</label>
-          <input id="palindrome" type="text" class="format-control" placeholder="palindrome">
+          <input id="palindrome" type="text" class="form-control" placeholder="palindrome">
         </div>
         <button type="submit" class="btn btn-primary">Check!</button>
       </form>
-      <br><p><span class="answer" id="responsePal"></span></p>
+      <div class="responseBox">
+        <br>
+        <p id="responsePal"> </p>
+        <br>
+      </div>
       <h1>Prime number generator</h1>
       <form id="primeForm">
         <div class="form-group">
           <label for="prime">Enter a numer and get all primes before it:</label>
-          <input id="prime" type="number" class="format-control" placeholder="prime">
+          <input id="prime" type="number" class="form-control" placeholder="prime">
         </div>
         <button type="submit" class="btn btn-default">Check your answer!</button>
       </form>
-      <br><p><span class="answer" id="responsePrime"></span></p>
+      <br><ul id="responsePrime"></ul>
     </div>
   </body>
 </html>

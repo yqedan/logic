@@ -1,6 +1,6 @@
-.wordPuzzleAnswer {
+.wordPuzzleAnswer, #responsePrime {
   display: none;
 }
-.answer{
-  font-size: 24px;
+.responseBox{
+  height: 30px;
 }
